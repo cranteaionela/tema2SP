@@ -7,7 +7,7 @@ N=50;
 s=(1+square(w*t,12.5))/2;
 for n = -N:N
     C(n+N+1) = 1/T * integral(@(t)((1+square(w*t,12.5))/2).*exp(-1j*n*w*t),0,T) ;
-    
+     %indicii trebuie sa fie pozitivi
 end
 sr = 0;
 for n = -N:N
@@ -18,13 +18,15 @@ hold on
 plot(t,real(sr),'-.r');
   %plot(t,real(sr),'-.r',t,imag(sr),'-.r');
 plot(t,s);
-xlabel('Timpul');
+xlabel('Timpul t[s]');
 ylabel('Semnal(t) si semnal.recompus(t)');
 title('Semnalul initial si cel recompus')
 hold off
 figure(2);
 hold on
 stem((-N:N)*w,2*abs(C));
+%stem este o functie ce reprezinta o anumita valoare
+%printr-un segment pornind de pe axa Ox
 xlabel('Pulsatia w');
 ylabel('Amplitudinile Ak');
 title('Spectrul de Amplitudini');
